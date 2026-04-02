@@ -21,5 +21,9 @@ This repository demonstrates proficiency in the full AI lifecycle:
 2.  **Infrastructure:** Writing a custom `Dockerfile` and `requirements.txt`.
 3.  **Deployment:** Serving a large language model through a production-ready API.
 
+## Model Weights
+Due to GitHub file size limitations, the fine-tuned LoRA adapters (adapter_model.safetensors) are hosted on Google Drive.
+https://drive.google.com/drive/folders/1t_mutiWiPxMlJv_bdVPv_3j5h_mBrZqE?usp=sharing 
+
 ---
 #AI #LLM #ZAKA #MedicalBot #Docker #Flask
