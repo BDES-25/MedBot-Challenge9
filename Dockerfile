@@ -1,18 +1,17 @@
-# Use a lightweight Python image
-FROM python:3.9-slim
+# Use a lightweight Python base image
+FROM python:3.12-slim
 
-# Set the working directory inside the container
+#Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the application code
+#Copy all files from your computer/Colab into the container
 COPY . .
+
+#Install libraries from your requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port Flask runs on
 EXPOSE 5000
 
-# Command to run the application
+# Command to run the app when the container opens
 CMD ["python", "app.py"]
