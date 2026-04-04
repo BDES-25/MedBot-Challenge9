@@ -1,10 +1,16 @@
 
+import os
+import torch
+from flask import Flask, render_template, request, jsonify
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from peft import PeftModel
+
 app = Flask(__name__)
 
 # CONFIGURATION
 # "EleutherAI/gpt-neox-20b" >> the right one but session crashed after using all available RAM
 BASE_MODEL_NAME = "EleutherAI/pythia-70m"
-ADAPTER_PATH = "./outputs"
+ADAPTER_PATH = "outputs"
 
 # Device detection (CPU for Colab Free/Render Free)
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -13,16 +19,21 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Starting Medbot on {device.upper()}... please wait.")
 
 try:
-    # Get absolute path to fix the 'Repo ID' error
+     # Get full absolute path to fix the 'Repo ID' error
     full_path = os.path.abspath(ADAPTER_PATH)
+    print(f"Loading from: {full_path}")
 
     # Load Tokenizer locally
     tokenizer = AutoTokenizer.from_pretrained(full_path, local_files_only=True)
 
     # Load Base Model (float32 is safest for CPU)
-    base_model = AutoModelForCausalLM.from_pretrained(BASE_MODEL_NAME, torch_dtype=torch.float32,device_map=None)
+    base_model = AutoModelForCausalLM.from_pretrained(
+        BASE_MODEL_NAME, 
+        torch_dtype=torch.float32,
+        device_map=None
+    )
 
-    # Load LoRA Adapters
+    #Load LoRA Adapters from the local path
     model = PeftModel.from_pretrained(base_model, full_path)
     model.to(device)
     model.eval()
@@ -31,6 +42,7 @@ try:
 
 except Exception as e:
     print(f"Error loading model: {e}")
+
 
 # ROUTES
 @app.route('/')
@@ -43,8 +55,7 @@ def predict():
     user_message = data.get("message", "")
 
     # Prompt engineering for the Medical Assistant
-    prompt = f"Patient: {user_message}
-Medbot:"
+    prompt = f"Patient: {user_message}\nMedbot:"
 
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
 
