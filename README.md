@@ -6,7 +6,7 @@ Challenge 9 - ZAKA AI Machine Learning Specialization
 This project was developed as part of the **ZAKA AI Certification (Challenge 9)**. It features a specialized Medical AI assistant (MedBot) fine-tuned on medical datasets using **LoRA (Low-Rank Adaptation)** and deployed as a containerized web application. It is designed to provide quick insights into medical symptoms through a user-friendly web interface.
 
 ## 📸 Preview
-
+<img width="427" height="367" alt="image" src="https://github.com/user-attachments/assets/254a78cb-eb65-4d79-874a-6eb6ed3c9e92" />
 
 ## Tech Stack
 * **Model:** Fine-tuned GPT-NeoX (using PEFT/LoRA)
