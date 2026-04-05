@@ -31,7 +31,7 @@ https://drive.google.com/drive/folders/1t_mutiWiPxMlJv_bdVPv_3j5h_mBrZqE?usp=sha
 
 ## 🛠️ Setup & Docker Instructions
 1. Clone the Repo: git clone https://github.com/YourUser/Medbot.git
-2. Download Weights: Download adapter_model.safetensors from [ https://drive.google.com/file/d/1JmnypQ4jXJ2-FO0VOJpCURp6LTIl8fVF/view?usp=drive_link  ] and place it in /outputs.
+2. Download Weights: Download adapter_model.safetensors from [ https://drive.google.com/file/d/1JmnypQ4jXJ2-FO0VOJpCURp6LTIl8fVF/view?usp=sharing ] and place it in /outputs.
 3. Build Docker Image:  docker build -t medbot 
 4. Run Container:  docker run -p 5000:5000 medbot
 
