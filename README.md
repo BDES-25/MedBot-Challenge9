@@ -42,7 +42,7 @@ Due to GitHub file size limitations, the fine-tuned LoRA adapters (adapter_model
 https://drive.google.com/drive/folders/1t_mutiWiPxMlJv_bdVPv_3j5h_mBrZqE?usp=sharing 
 
 ## 🛠️ Setup & Docker Instructions
-1. Clone the Repo: git clone https://github.com/BDES/Medbot.git 
+1. Clone the Repo: git clone https://github.com/BDES-25/MedBot-Challenge9.git 
 
 **Option 1: Docker**
 Use this method for containerized deployment:
